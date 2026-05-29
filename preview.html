@@ -8,7 +8,7 @@
     body { background: #0A1628; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
     #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
     #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0A1628; z-index: 9999; }
-    #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
+    #__bundler_thumbnail svg { width: min(280px, 55vw); height: min(280px, 55vw); }
     #__bundler_placeholder { color: #999; font-size: 14px; }
   </style>
   <noscript>
@@ -21,10 +21,10 @@
 <body>
   <div id="__bundler_thumbnail">
   <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <rect x="40" y="40" width="120" height="120" rx="24" fill="#CFA962"></rect>
-    <rect x="66" y="72" width="68" height="10" rx="3" fill="#0A1628"></rect>
-    <rect x="66" y="118" width="68" height="10" rx="3" fill="#0A1628"></rect>
-    <path d="M66 96 L100 96 L100 87 L124 100 L100 113 L100 104 L66 104 Z" fill="#0A1628"></path>
+    <rect x="10" y="10" width="180" height="180" rx="38" fill="#CFA962"/>
+    <rect x="52" y="67" width="96" height="9" rx="2" fill="#0A1628"/>
+    <path d="M52 95.5 L112 95.5 L112 85 L148 100 L112 115 L112 104.5 L52 104.5 Z" fill="#0A1628"/>
+    <rect x="52" y="124" width="96" height="9" rx="2" fill="#0A1628"/>
   </svg>
 </div>
   <div id="__bundler_loading">Unpacking...</div>
