@@ -126,7 +126,39 @@ document.addEventListener('DOMContentLoaded', async function() {
     const headOpen = template.match(/<head[^>]*>/i);
     if (headOpen) {
       const i = headOpen.index + headOpen[0].length;
-      template = template.slice(0, i) + resourceScript + template.slice(i);
+      const responsiveHead = [
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        '<style id="__remit_resp">',
+        '  html { overflow-x: hidden; }',
+        '  body { overflow-x: hidden !important; }',
+        '<\/style>',
+        '<script id="__remit_scale">',
+        '(function () {',
+        '  function scaleToViewport() {',
+        '    var b = document.body;',
+        '    if (!b) return;',
+        '    b.style.transform = "";',
+        '    b.style.width = "";',
+        '    var designWidth = Math.max(b.scrollWidth, 320);',
+        '    var vw = window.innerWidth;',
+        '    if (vw < designWidth) {',
+        '      var scale = vw / designWidth;',
+        '      b.style.transformOrigin = "0 0";',
+        '      b.style.transform = "scale(" + scale + ")";',
+        '      b.style.width = (100 / scale) + "vw";',
+        '      document.documentElement.style.height = Math.ceil(b.scrollHeight * scale) + "px";',
+        '      document.documentElement.style.overflowX = "hidden";',
+        '    }',
+        '  }',
+        '  window.addEventListener("resize", scaleToViewport);',
+        '  window.addEventListener("load", function () {',
+        '    scaleToViewport();',
+        '    setTimeout(scaleToViewport, 500);',
+        '  });',
+        '})();',
+        '<\/' + 'script>'
+      ].join('\n');
+      template = template.slice(0, i) + resourceScript + responsiveHead + template.slice(i);
     }
 
     // Parse the template and swap the root element. Scripts inserted via
