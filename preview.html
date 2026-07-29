@@ -2,6 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="E-Remit%20logo.png" type="image/png">
+  <link rel="shortcut icon" href="E-Remit%20logo.png">
   <title>E-Remit · WFG National Title Insurance</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +31,7 @@
 .nav-brand {
   display: flex; align-items: center; gap: 12px; text-decoration: none;
 }
-.nav-logo { width: 36px; height: 36px; object-fit: contain; }
+.nav-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; filter: drop-shadow(0 0 6px rgba(207,169,98,0.5)) drop-shadow(0 0 2px rgba(207,169,98,0.3)); }
 .nav-title {
   font-size: 18px; font-weight: 700; color: #CFA962;
   letter-spacing: 0.04em; font-style: normal;
@@ -119,7 +121,7 @@ body { padding-top: 65px; }
   <div class="nav-actions">
     <a href="https://wfgtitle.my.site.com/" target="_blank" rel="noopener noreferrer"
        class="nav-btn nav-btn-primary" aria-label="Open E-Remit production application">
-      &#x1F680; Launch App
+      Launch E&#x2011;Remit
     </a>
     <a href="https://willistonfinancial-my.sharepoint.com/:f:/g/personal/ealder_myhome_com/IgCEx7m3UWloT4MPTacb95GUAVpKhTDICJF9k1QtKYFeKwI?e=ZnAJ91"
        target="_blank" rel="noopener noreferrer"
@@ -255,6 +257,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (headOpen) {
       const i = headOpen.index + headOpen[0].length;
       const responsiveHead = [
+        '<link rel="icon" href="E-Remit%20logo.png" type="image/png">',
+        '<link rel="shortcut icon" href="E-Remit%20logo.png">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         '<style id="__remit_resp">',
         '  html { overflow-x: hidden; }',
@@ -296,7 +300,9 @@ document.addEventListener('DOMContentLoaded', async function() {
       const navCSS = '<style id="__eremit_nav_css">' +
         '#eremit-nav{position:fixed;top:0;left:0;right:0;z-index:10002;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(10,22,40,0.96);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(207,169,98,0.3);font-family:\'Montserrat\',-apple-system,BlinkMacSystemFont,sans-serif;}' +
         '.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}' +
-        '.nav-logo{width:36px;height:36px;object-fit:contain;}' +
+        '.nav-logo{width:36px;height:36px;object-fit:contain;border-radius:8px;filter:drop-shadow(0 0 6px rgba(207,169,98,0.5)) drop-shadow(0 0 2px rgba(207,169,98,0.3));}' +
+        '.hero-display.variant-mark .lm-tile{background:url(\'E-Remit%20logo.png\') center/contain no-repeat!important;}' +
+        '.hero-display.variant-mark .lm-tile svg{display:none!important;}' +
         '.nav-title{font-size:18px;font-weight:700;color:#CFA962;letter-spacing:0.04em;}' +
         '.nav-title em{font-style:italic;}' +
         '.nav-actions{display:flex;align-items:center;gap:10px;}' +
@@ -317,7 +323,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         '.faq-body{padding:24px;overflow-y:auto;max-height:calc(80vh - 72px);font-family:-apple-system,BlinkMacSystemFont,sans-serif;}' +
         '.faq-empty{text-align:center;padding:48px 24px;color:rgba(255,255,255,0.4);font-size:15px;line-height:1.6;}' +
         '.faq-empty .faq-icon{font-size:40px;margin-bottom:16px;display:block;}' +
-        '@media(max-width:600px){#eremit-nav{padding:10px 16px;}.nav-title{font-size:15px;}.nav-btn{padding:7px 12px;font-size:12px;}.nav-logo{width:28px;height:28px;}}' +
+        '@media(max-width:600px){#eremit-nav{padding:10px 16px;}.nav-title{font-size:15px;}.nav-btn{padding:7px 12px;font-size:12px;}.nav-logo{width:28px;height:28px;border-radius:6px;}}' +
         '<\/style>';
       const navHTML =
         '<nav id="eremit-nav" role="navigation" aria-label="E-Remit navigation">' +
@@ -326,7 +332,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             '<span class="nav-title">E\u2011<em>Remit<\/em><\/span>' +
           '<\/div>' +
           '<div class="nav-actions">' +
-            '<a href="https://wfgtitle.my.site.com/" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-primary" aria-label="Open E-Remit production application">\uD83D\uDE80 Launch App<\/a>' +
+            '<a href="https://wfgtitle.my.site.com/" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-primary" aria-label="Open E-Remit production application">Launch E\u2011Remit<\/a>' +
             '<a href="https://willistonfinancial-my.sharepoint.com/:f:/g/personal/ealder_myhome_com/IgCEx7m3UWloT4MPTacb95GUAVpKhTDICJF9k1QtKYFeKwI?e=ZnAJ91" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-secondary" aria-label="Watch tutorial videos">&#x25B6; Tutorial Videos<\/a>' +
             '<button class="nav-btn nav-btn-ghost" onclick="document.getElementById(\'faq-modal\').showModal()" aria-haspopup="dialog" aria-label="Open FAQ">FAQs<\/button>' +
           '<\/div>' +
