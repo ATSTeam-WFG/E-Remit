@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="E-Remit%20logo.png" type="image/png">
   <link rel="shortcut icon" href="E-Remit%20logo.png">
   <title>E-Remit · WFG National Title Insurance</title>
@@ -97,11 +98,43 @@ body { padding-top: 65px; }
   color: rgba(255,255,255,0.4); font-size: 15px; line-height: 1.6;
 }
 .faq-empty .faq-icon { font-size: 40px; margin-bottom: 16px; display: block; }
-@media (max-width: 600px) {
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: 1.5px solid rgba(207,169,98,0.4);
+  border-radius: 8px; padding: 8px 10px;
+  cursor: pointer; flex-direction: column;
+  gap: 5px; align-items: center; justify-content: center;
+}
+.nav-hamburger span {
+  display: block; width: 20px; height: 2px;
+  background: #CFA962; border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-menu {
+  display: none; position: fixed;
+  top: 58px; left: 0; right: 0;
+  background: rgba(10,22,40,0.98);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(207,169,98,0.2);
+  padding: 14px 16px 18px; flex-direction: column;
+  gap: 10px; z-index: 10001;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-menu .nav-btn { width: 100%; justify-content: center; font-size: 14px; padding: 12px 18px; }
+@media (max-width: 640px) {
   #eremit-nav { padding: 10px 16px; }
-  .nav-title { font-size: 15px; }
-  .nav-btn { padding: 7px 12px; font-size: 12px; }
-  .nav-logo { width: 28px; height: 28px; }
+  .nav-logo { width: 30px; height: 30px; }
+  .nav-title { font-size: 16px; }
+  .nav-actions { display: none; }
+  .nav-hamburger { display: flex; }
+  body { padding-top: 58px; }
+  #__bundler_thumbnail { top: 58px !important; height: calc(100% - 58px) !important; }
 }
   </style>
   <noscript>
@@ -133,7 +166,28 @@ body { padding-top: 65px; }
       FAQs
     </button>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger-btn"
+          aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile-menu"
+          onclick="(function(){var m=document.getElementById('nav-mobile-menu');var b=document.getElementById('nav-hamburger-btn');var o=m.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',o);})()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu" role="menu" aria-label="Mobile navigation">
+  <a href="https://wfgtitle.my.site.com/" target="_blank" rel="noopener noreferrer"
+     class="nav-btn nav-btn-primary" role="menuitem" aria-label="Open E-Remit production application">
+    Launch E&#x2011;Remit
+  </a>
+  <a href="https://willistonfinancial-my.sharepoint.com/:f:/g/personal/ealder_myhome_com/IgCEx7m3UWloT4MPTacb95GUAVpKhTDICJF9k1QtKYFeKwI?e=ZnAJ91"
+     target="_blank" rel="noopener noreferrer"
+     class="nav-btn nav-btn-secondary" role="menuitem" aria-label="Watch tutorial videos">
+    &#x25B6; Tutorial Videos
+  </a>
+  <button class="nav-btn nav-btn-ghost" role="menuitem"
+          onclick="document.getElementById('nav-mobile-menu').classList.remove('open');document.getElementById('nav-hamburger-btn').classList.remove('open');document.getElementById('nav-hamburger-btn').setAttribute('aria-expanded',false);document.getElementById('faq-modal').showModal()"
+          aria-haspopup="dialog" aria-label="Open FAQ">
+    FAQs
+  </button>
+</div>
 <!-- ── FAQ Modal ── -->
 <dialog id="faq-modal" aria-labelledby="faq-title" aria-modal="true">
   <div class="faq-header">
@@ -323,7 +377,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         '.faq-empty{text-align:center;padding:48px 24px;color:rgba(255,255,255,0.4);font-size:15px;line-height:1.6;}' +
         '.faq-empty .faq-icon{font-size:40px;margin-bottom:16px;display:block;}' +
         '.hero-display.variant-mark .lm-tile{border-radius:0!important;box-shadow:none!important;overflow:visible!important;}' +
-        '@media(max-width:600px){#eremit-nav{padding:10px 16px;}.nav-title{font-size:15px;}.nav-btn{padding:7px 12px;font-size:12px;}.nav-logo{width:28px;height:28px;border-radius:6px;}}' +
+        '.nav-hamburger{display:none;background:transparent;border:1.5px solid rgba(207,169,98,0.4);border-radius:8px;padding:8px 10px;cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center;}' +
+        '.nav-hamburger span{display:block;width:20px;height:2px;background:#CFA962;border-radius:2px;transition:transform 0.2s ease,opacity 0.2s ease;}' +
+        '.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}' +
+        '.nav-hamburger.open span:nth-child(2){opacity:0;}' +
+        '.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}' +
+        '.nav-mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(10,22,40,0.98);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(207,169,98,0.2);padding:14px 16px 18px;flex-direction:column;gap:10px;z-index:10001;font-family:\'Montserrat\',-apple-system,BlinkMacSystemFont,sans-serif;}' +
+        '.nav-mobile-menu.open{display:flex;}' +
+        '.nav-mobile-menu .nav-btn{width:100%;justify-content:center;font-size:14px;padding:12px 18px;}' +
+        '@media(max-width:640px){#eremit-nav{padding:10px 16px;}.nav-logo{width:30px;height:30px;}.nav-title{font-size:16px;}.nav-actions{display:none;}.nav-hamburger{display:flex;}body{padding-top:58px!important;}}' +
         '<\/style>';
       const navHTML =
         '<nav id="eremit-nav" role="navigation" aria-label="E-Remit navigation">' +
@@ -336,7 +398,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             '<a href="https://willistonfinancial-my.sharepoint.com/:f:/g/personal/ealder_myhome_com/IgCEx7m3UWloT4MPTacb95GUAVpKhTDICJF9k1QtKYFeKwI?e=ZnAJ91" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-secondary" aria-label="Watch tutorial videos">&#x25B6; Tutorial Videos<\/a>' +
             '<button class="nav-btn nav-btn-ghost" onclick="document.getElementById(\'faq-modal\').showModal()" aria-haspopup="dialog" aria-label="Open FAQ">FAQs<\/button>' +
           '<\/div>' +
+          '<button class="nav-hamburger" id="nav-hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile-menu" onclick="(function(){var m=document.getElementById(\'nav-mobile-menu\');var b=document.getElementById(\'nav-hamburger-btn\');var o=m.classList.toggle(\'open\');b.classList.toggle(\'open\',o);b.setAttribute(\'aria-expanded\',o);})()"><span><\/span><span><\/span><span><\/span><\/button>' +
         '<\/nav>' +
+        '<div class="nav-mobile-menu" id="nav-mobile-menu" role="menu" aria-label="Mobile navigation">' +
+          '<a href="https://wfgtitle.my.site.com/" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-primary" role="menuitem">Launch E\u2011Remit<\/a>' +
+          '<a href="https://willistonfinancial-my.sharepoint.com/:f:/g/personal/ealder_myhome_com/IgCEx7m3UWloT4MPTacb95GUAVpKhTDICJF9k1QtKYFeKwI?e=ZnAJ91" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-secondary" role="menuitem">&#x25B6; Tutorial Videos<\/a>' +
+          '<button class="nav-btn nav-btn-ghost" role="menuitem" onclick="document.getElementById(\'nav-mobile-menu\').classList.remove(\'open\');document.getElementById(\'nav-hamburger-btn\').classList.remove(\'open\');document.getElementById(\'nav-hamburger-btn\').setAttribute(\'aria-expanded\',false);document.getElementById(\'faq-modal\').showModal()" aria-haspopup="dialog">FAQs<\/button>' +
+        '<\/div>' +
         '<dialog id="faq-modal" aria-labelledby="faq-title" aria-modal="true">' +
           '<div class="faq-header">' +
             '<h2 id="faq-title">Frequently Asked Questions<\/h2>' +
